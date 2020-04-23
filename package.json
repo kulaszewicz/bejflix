@@ -2,11 +2,11 @@
   "name": "bejflix",
   "version": "1.0.0",
   "description": "BigData project",
-  "main": "server.js",
+  "main": "server/server.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node server.js",
+    "dev": "cross-env NODE_ENV=development node server/server.js",
     "build": "next build",
-    "start": "cross-env NODE_ENV=production node server.js",
+    "start": "cross-env NODE_ENV=production node server/server.js",
     "test": "is-ci test:ci test:local",
     "updateSnapshot": "jest --updateSnapshot"
   },
