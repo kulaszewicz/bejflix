@@ -1,6 +1,11 @@
 import React from 'react';
+import Logo from '../atoms/Logo';
 
-const Page = () => <h1>Hejo, bejflix!!!</h1>;
+const Page = () => (
+    <div>
+        <Logo />
+    </div>
+);
 
 Page.namespacesRequired = ['common', 'header', 'home'];
 
