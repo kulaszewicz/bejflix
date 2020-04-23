@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import App from 'next/app';
 import Head from 'next/head';
 import { CssBaseline } from '@material-ui/core';
+import './App.css';
 
 function BejflixApp({ Component, pageProps }) {
     useEffect(() => {
