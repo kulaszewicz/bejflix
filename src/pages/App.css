@@ -23,3 +23,8 @@ body::before {
     clip-path: polygon(0 0, 52% 0, 78% 100%, 0% 100%);
 }
 
+.carousel-item-bejflix {
+    margin-left: 20px;
+    width: 100% !important;
+}
+
