@@ -3,7 +3,7 @@ import Carousel from 'react-multi-carousel';
 import Tile from '../../atoms/Tile/Tile';
 import useSliderStyles from './styles';
 
-const Slider = ({ variant, movies }) => {
+const Slider = ({ variant, movies, storedRatings, setStoredRatings }) => {
   const classes = useSliderStyles();
 
   const responsive = {
@@ -38,15 +38,21 @@ const Slider = ({ variant, movies }) => {
         deviceType={'desktop'}
         itemClass="carousel-item-bejflix"
       >
-        {movies.map(({ poster, Title, description }, index) => (
-          <Tile
-            key={index}
-            variant={variant}
-            image={poster}
-            title={Title}
-            description={description}
-          />
-        ))}
+        {movies.map(({ poster, Title, description, id }, index) => {
+          return (
+            <Tile
+              key={index}
+              variant={variant}
+              id={id}
+              image={poster}
+              rating={storedRatings.filter((rate) => rate.id === id)}
+              title={Title}
+              description={description}
+              setStoredRatings={setStoredRatings}
+              storedRatings={storedRatings}
+            />
+          );
+        })}
       </Carousel>
     </div>
   );

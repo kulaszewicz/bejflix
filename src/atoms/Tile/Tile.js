@@ -2,7 +2,17 @@ import React, { useState } from 'react';
 import useTileStyles from './styles';
 import TileCover from './TileHover';
 
-const Tile = ({ variant, image, alt, title, description }) => {
+const Tile = ({
+  variant,
+  image,
+  alt,
+  title,
+  description,
+  id,
+  rating,
+  storedRatings,
+  setStoredRatings,
+}) => {
   const [isTileHoverVisible, setIsTileHoverVisible] = useState(false);
 
   const classes = useTileStyles({ variant, isTileHoverVisible });
@@ -15,7 +25,15 @@ const Tile = ({ variant, image, alt, title, description }) => {
     >
       <img className={classes.img} src={image} alt={alt} />
       {isTileHoverVisible && (
-        <TileCover title={title} description={description} variant={variant} />
+        <TileCover
+          title={title}
+          description={description}
+          rating={rating}
+          id={id}
+          storedRatings={storedRatings}
+          setStoredRatings={setStoredRatings}
+          variant={variant}
+        />
       )}
     </div>
   );

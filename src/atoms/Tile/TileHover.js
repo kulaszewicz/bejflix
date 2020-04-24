@@ -1,12 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Rating from '@material-ui/lab/Rating';
 import Typography from '../Typography';
 import useTileStyles from './styles';
 
-const TileCover = ({ title, rating, description, variant }) => {
+const TileCover = ({
+  title,
+  rating,
+  description,
+  variant,
+  id,
+  setStoredRatings,
+  storedRatings,
+}) => {
   const classes = useTileStyles({ variant });
 
-  const [value, setValue] = useState(rating || 0);
+
+  const [value, setValue] = useState((rating.length && rating[0].value) || 0);
+
+  useEffect(() => {
+    if (value !== 0) {
+      let isThere = null;
+      const currentStored = [...storedRatings];
+      currentStored.forEach((el, index) => {
+        if (el.id === id) {
+          isThere = index;
+        }
+      });
+      if (isThere !== null && isThere !== -1) {
+        currentStored[isThere] = { id: id, value: value };
+        setStoredRatings(currentStored);
+      } else if (isThere === null) {
+        setStoredRatings([...currentStored, { id: id, value: value }]);
+      } else if (currentStored.length === 0) {
+        setStoredRatings([...currentStored, { id: id, value: value }]);
+      }
+    }
+  }, [value]);
 
   return (
     <div className={classes.hoverContainer}>
