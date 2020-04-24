@@ -1,11 +1,8 @@
-import { createStyles, makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 
-const useLogoStyles = makeStyles(
-    createStyles({
-        logo: {
-            width: '200px',
-        },
-    })
-);
-
+const useLogoStyles = makeStyles(() => ({
+  logo: {
+    width: '200px',
+  },
+}));
 export default useLogoStyles;

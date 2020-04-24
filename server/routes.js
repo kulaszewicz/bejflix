@@ -1,4 +1,5 @@
-const routes = module.exports = require('next-routes')();
+const nextRoutes = require('next-routes');
+const routes = nextRoutes();
 
 routes.add('index', '/');
 
