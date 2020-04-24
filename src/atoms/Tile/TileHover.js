@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import firebase from 'firebase';
 import Rating from '@material-ui/lab/Rating';
 import Typography from '../Typography';
 import useTileStyles from './styles';
@@ -14,10 +15,10 @@ const TileCover = ({
 }) => {
   const classes = useTileStyles({ variant });
 
-
   const [value, setValue] = useState((rating.length && rating[0].value) || 0);
 
   useEffect(() => {
+    firebase.analytics().logEvent('notification_received');
     if (value !== 0) {
       let isThere = null;
       const currentStored = [...storedRatings];
@@ -31,6 +32,14 @@ const TileCover = ({
         setStoredRatings(currentStored);
       } else if (isThere === null) {
         setStoredRatings([...currentStored, { id: id, value: value }]);
+        //Send only rating that was done first
+        //TODO add real user id
+        firebase.analytics().logEvent('userRating', {
+          movieId: id,
+          rating: value,
+          userId: 1,
+          timestamp: Date.now(),
+        });
       } else if (currentStored.length === 0) {
         setStoredRatings([...currentStored, { id: id, value: value }]);
       }

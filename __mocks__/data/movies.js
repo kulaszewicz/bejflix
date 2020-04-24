@@ -111,7 +111,7 @@ export default [
     description:
       'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
     poster:
-      'https://lh3.googleusercontent.com/proxy/sBSsmPNIeXkEwEKNjzVQ9YLTF2dl7K7GQp0XSQJByv2LJDmdBMpiSBy4s7ZT6Ge8DR-WnjR10agj-bA5AnwfCluzGnFtPMTi_ltndMESPjGPM02KbSoG2fz7FoEUbShbVWjzAXG1WKQSiJH2kWCuCTePfeNQIpYsgaleom-eG70K_bttExvAD5p1LwecbnKuho89SFwOWW40sQFP-Ok',
+      'https://images.squarespace-cdn.com/content/57e05e534402434aa0f846c2/1500151662574-MTZ8HM3MAM4EA00VPR0R/Creed-45.jpg?format=1000w&content-type=image%2Fjpeg',
   },
   {
     id: 142424,

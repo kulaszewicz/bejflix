@@ -27,7 +27,6 @@ function BejflixApp({ Component, pageProps }) {
     <>
       <Head>
         <title>Pros.Work</title>
-        <link href="./App.css" rel="stylesheet" />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
