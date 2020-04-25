@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "removeComments": true,
+    "baseUrl": "./src",
+    "paths": {
+      "~/*": ["./*"],
+      "material-kit-pro-react/*": [
+        "./vendor/material-kit-pro-react-v1.8.0/src/*"
+      ]
+    }
+  },
+  "exclude": ["node_modules", "cypress", "docs"]
+}
