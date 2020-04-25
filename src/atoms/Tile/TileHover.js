@@ -18,7 +18,7 @@ const TileCover = ({
   const [value, setValue] = useState((rating.length && rating[0].value) || 0);
 
   useEffect(() => {
-    firebase.analytics().logEvent('notification_received');
+    const analytics = firebase.analytics();
     if (value !== 0) {
       let isThere = null;
       const currentStored = [...storedRatings];
@@ -34,7 +34,7 @@ const TileCover = ({
         setStoredRatings([...currentStored, { id: id, value: value }]);
         //Send only rating that was done first
         //TODO add real user id
-        firebase.analytics().logEvent('userRating', {
+        analytics.logEvent('userRating', {
           movieId: id,
           rating: value,
           userId: 1,

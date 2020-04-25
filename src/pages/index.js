@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Logo from '~/atoms/Logo';
+import Header from '~/organisms/Header';
 import Section from '~/organisms/Section';
 import { useLocalStorage } from '~/utils/useLocalStorage';
 import mockMovies from '../../__mocks__/data/movies';
@@ -12,7 +12,7 @@ const Home = () => {
   }, []);
   return (
     <div>
-      <Logo />
+      <Header />
       <Section
         sectionTitle={'Recommended for you'}
         storedRatings={storedRatings}
