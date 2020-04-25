@@ -6,8 +6,14 @@ import firebase from '../services/firebase/clientApp';
 
 const Home = () => {
   const [storedRatings, setStoredRatings] = useLocalStorage('ratings', []);
+  const [user, setUser] = useLocalStorage('user', {});
   useEffect(() => {
     firebase.analytics().logEvent('notification_received');
+    if (!user.id) {
+      setUser({
+        id: Math.floor(Math.random() * 1000000),
+      });
+    }
   }, []);
   const tempSections = [
     {
@@ -27,7 +33,7 @@ const Home = () => {
   ];
   return (
     <div>
-      <Landing sections={tempSections} />
+      <Landing userId={user.id} sections={tempSections} />
     </div>
   );
 };

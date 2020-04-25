@@ -12,6 +12,7 @@ const TileCover = ({
   id,
   setStoredRatings,
   storedRatings,
+  userId,
 }) => {
   const classes = useTileStyles({ variant });
 
@@ -37,7 +38,7 @@ const TileCover = ({
         analytics.logEvent('userRating', {
           movieId: id,
           rating: value,
-          userId: 1,
+          userId: userId || 1,
           timestamp: Date.now(),
         });
       } else if (currentStored.length === 0) {

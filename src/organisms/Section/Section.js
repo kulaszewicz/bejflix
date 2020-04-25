@@ -9,6 +9,7 @@ const Section = ({
   storedRatings,
   setStoredRatings,
   sectionTitle,
+  userId,
 }) => {
   const classes = useSectionStyles({ variant });
 
@@ -22,6 +23,7 @@ const Section = ({
         {sectionTitle}
       </Typography>
       <Slider
+        userId={userId}
         variant={variant}
         movies={movies}
         storedRatings={storedRatings}

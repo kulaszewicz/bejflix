@@ -3,7 +3,7 @@ import Header from '~/organisms/Header';
 import Section from '~/organisms/Section';
 import useLandingStyles from './styles';
 
-const Landing = ({ sections }) => {
+const Landing = ({ sections, userId }) => {
   const classes = useLandingStyles();
 
   return (
@@ -22,6 +22,7 @@ const Landing = ({ sections }) => {
               setStoredRatings={setStoredRatings}
               variant={variant}
               movies={movies}
+              userId={userId}
             />
           )
         )}

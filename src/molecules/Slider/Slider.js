@@ -3,7 +3,13 @@ import Carousel from 'react-multi-carousel';
 import Tile from '../../atoms/Tile/Tile';
 import useSliderStyles from './styles';
 
-const Slider = ({ variant, movies, storedRatings, setStoredRatings }) => {
+const Slider = ({
+  variant,
+  movies,
+  storedRatings,
+  setStoredRatings,
+  userId,
+}) => {
   const classes = useSliderStyles();
 
   const responsive = {
@@ -50,6 +56,7 @@ const Slider = ({ variant, movies, storedRatings, setStoredRatings }) => {
               description={description}
               setStoredRatings={setStoredRatings}
               storedRatings={storedRatings}
+              userId={userId}
             />
           );
         })}
