@@ -12,6 +12,7 @@ const Tile = ({
   rating,
   storedRatings,
   setStoredRatings,
+  userId,
 }) => {
   const [isTileHoverVisible, setIsTileHoverVisible] = useState(false);
 
@@ -33,6 +34,7 @@ const Tile = ({
           storedRatings={storedRatings}
           setStoredRatings={setStoredRatings}
           variant={variant}
+          userId={userId}
         />
       )}
     </div>
