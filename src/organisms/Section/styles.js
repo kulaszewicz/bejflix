@@ -6,7 +6,7 @@ const useSectionStyles = makeStyles((theme) => ({
     marginBottom: '45px',
   },
   sectionTitle: ({ variant }) => ({
-    marginBottom: variant === 'sm' ? '23px' : '45px',
+    marginBottom: variant === 'sm' ? '23px' : '32px',
     color: theme.palette.common.white,
   }),
 }));
