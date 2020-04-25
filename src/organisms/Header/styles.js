@@ -8,6 +8,7 @@ const useHeaderStyles = makeStyles(() => ({
     alignItems: 'center',
     justifyItems: 'center',
     height: '120px',
+    paddingBottom: '30px',
   },
   search: {
     paddingLeft: '55px',

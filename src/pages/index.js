@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import Header from '~/organisms/Header';
-import Section from '~/organisms/Section';
+import Landing from '~/templates/Landing';
 import { useLocalStorage } from '~/utils/useLocalStorage';
 import mockMovies from '../../__mocks__/data/movies';
 import firebase from '../services/firebase/clientApp';
@@ -10,23 +9,25 @@ const Home = () => {
   useEffect(() => {
     firebase.analytics().logEvent('notification_received');
   }, []);
+  const tempSections = [
+    {
+      sectionTitle: 'Recommended for you',
+      storedRatings,
+      setStoredRatings,
+      variant: 'lg',
+      movies: mockMovies.slice(0, 6),
+    },
+    {
+      sectionTitle: 'Top 10 this week',
+      storedRatings,
+      setStoredRatings,
+      variant: 'sm',
+      movies: mockMovies.slice(6, 15),
+    },
+  ];
   return (
     <div>
-      <Header />
-      <Section
-        sectionTitle={'Recommended for you'}
-        storedRatings={storedRatings}
-        setStoredRatings={setStoredRatings}
-        variant={'lg'}
-        movies={mockMovies.slice(0, 6)}
-      />
-      <Section
-        sectionTitle={'Top 10 this week'}
-        storedRatings={storedRatings}
-        setStoredRatings={setStoredRatings}
-        variant={'sm'}
-        movies={mockMovies.slice(6, 15)}
-      />
+      <Landing sections={tempSections} />
     </div>
   );
 };
