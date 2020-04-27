@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Pros.Work</title>
+        <title>Bejflix</title>
       </Head>
 
       <ThemeProvider theme={theme}>
