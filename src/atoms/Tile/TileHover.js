@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import firebase from 'firebase';
 import Rating from '@material-ui/lab/Rating';
+import { userRating } from '~/services/bejflix/userRating';
 import Typography from '../Typography';
 import useTileStyles from './styles';
 
@@ -35,6 +36,16 @@ const TileCover = ({
         setStoredRatings([...currentStored, { id: id, value: value }]);
         //Send only rating that was done first
         //TODO add real user id
+        // Cloud Function API
+        userRating
+          .sendRatingToBigQuery({
+            movieId: id,
+            rating: value,
+            userId: userId || 1,
+            timestamp: Date.now(),
+          })
+          .then((data) => console.log(data));
+        // Analytics
         analytics.logEvent('userRating', {
           movieId: id,
           rating: value,
