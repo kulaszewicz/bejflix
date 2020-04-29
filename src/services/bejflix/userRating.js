@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { apiEndpoint, config } from './config';
+import { config } from './config';
 
 const sendRatingToBigQuery = async (ratingObject) => {
   try {
     return (
       await axios.post(
-        `${apiEndpoint}/api/userRating`,
+        `https://us-central1-smiling-mark-270607.cloudfunctions.net/movieRating/api/userRating`,
         {
           ...ratingObject,
         },
