@@ -1,2 +1,4 @@
 runtime: nodejs12
 service: default
+env_variables:
+  API_ENDPOINT: "https://us-central1-smiling-mark-270607.cloudfunctions.net/movieRating"
