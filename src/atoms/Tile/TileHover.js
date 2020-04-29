@@ -31,18 +31,10 @@ const TileCover = ({
       });
       if (isThere !== null && isThere !== -1) {
         currentStored[isThere] = { id: id, value: value };
-        userRating
-          .sendRatingToBigQuery({
-            movieId: id,
-            rating: value,
-            userId: userId || 1,
-            timestamp: Date.now(),
-          })
-          .then((data) => console.log(data));
         setStoredRatings(currentStored);
       } else if (isThere === null) {
         setStoredRatings([...currentStored, { id: id, value: value }]);
-        //Send only rating that was done first
+        //Send only rating that was done first - 1
         //TODO add real user id
         // Cloud Function API
         userRating
