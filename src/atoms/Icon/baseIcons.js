@@ -13,4 +13,5 @@ export {
   Star,
   ViewCarousel,
   Work,
+  GitHub,
 } from '@material-ui/icons';

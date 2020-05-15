@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Fade from '@material-ui/core/Fade';
+import { GitHub } from '@material-ui/icons';
 import BackgroundImage from '~/atoms/BackgroundImage';
+import Button from '~/atoms/Button';
 import CenteringContainer from '~/atoms/containers/CenteringContainer';
 import VerticalContainer from '~/atoms/containers/VerticalContainer';
 import Logo from '~/atoms/Logo';
@@ -43,6 +45,7 @@ const Login = ({ style }) => {
         </Fade>
         <InputWithLabel label={'email'} type="email" name={'email'} />
         <InputWithLabel label={'password'} type="password" name={'password'} />
+        <Button startIcon={<GitHub />}>{'Sign in'}</Button>
       </CenteringContainer>
     </div>
   );
