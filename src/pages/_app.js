@@ -4,8 +4,10 @@ import React, { useEffect } from 'react';
 import App from 'next/app';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
-import { CssBaseline, ThemeProvider } from '@material-ui/core';
-import theme from '~/configs/theme';
+import { CssBaseline } from '@material-ui/core';
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import defaultTheme from '../utils/theme';
+import { Fonts } from '../utils/theme/fonts';
 
 if (typeof window !== undefined && process.env.NODE_ENV === 'development') {
   const whyDidYouRender = require('@welldone-software/why-did-you-render');
@@ -29,10 +31,11 @@ function MyApp({ Component, pageProps }) {
         <title>Bejflix</title>
       </Head>
 
-      <ThemeProvider theme={theme}>
+      <MuiThemeProvider theme={defaultTheme}>
+        <Fonts />
         <CssBaseline />
         <Component {...pageProps} />
-      </ThemeProvider>
+      </MuiThemeProvider>
     </>
   );
 }
