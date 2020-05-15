@@ -6,6 +6,7 @@ import CenteringContainer from '~/atoms/containers/CenteringContainer';
 import VerticalContainer from '~/atoms/containers/VerticalContainer';
 import Logo from '~/atoms/Logo';
 import Typography from '~/atoms/Typography';
+import InputWithLabel from '~/molecules/InputWithLabel';
 import useLoginStyles from './styles';
 
 const propTypes = {
@@ -40,6 +41,8 @@ const Login = ({ style }) => {
             </VerticalContainer>
           </div>
         </Fade>
+        <InputWithLabel label={'email'} type="email" name={'email'} />
+        <InputWithLabel label={'password'} type="password" name={'password'} />
       </CenteringContainer>
     </div>
   );

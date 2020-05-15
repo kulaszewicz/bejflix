@@ -1,5 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 import { merge } from '~/utils/merge';
+import defaultPalette from './palette';
 
 export const createThemeOptions = ({
   palette = {},
@@ -7,6 +8,7 @@ export const createThemeOptions = ({
   fontFamily = 'Leelawadee',
   ...rest
 }) => {
+  palette = merge(defaultPalette, palette);
   return merge(
     {
       palette,
