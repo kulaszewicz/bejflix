@@ -6,6 +6,7 @@ import CenteringContainer from '~/atoms/containers/CenteringContainer';
 import VerticalContainer from '~/atoms/containers/VerticalContainer';
 import Logo from '~/atoms/Logo';
 import Typography from '~/atoms/Typography';
+import LoginForm from '~/molecules/LoginForm';
 import useLoginStyles from './styles';
 
 const propTypes = {
@@ -40,6 +41,7 @@ const Login = ({ style }) => {
             </VerticalContainer>
           </div>
         </Fade>
+        <LoginForm title={'Welcome Back!'} />
       </CenteringContainer>
     </div>
   );

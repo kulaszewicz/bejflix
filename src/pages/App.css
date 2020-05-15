@@ -30,3 +30,10 @@ body::before {
   color: grey !important;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+  -webkit-box-shadow: 0 0 0 30px #E5E5E5 inset !important;
+}
+
