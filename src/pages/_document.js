@@ -1,7 +1,7 @@
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/core/styles';
-import theme from '~/configs/theme';
+import defaultTheme from '../utils/theme';
 
 const GTM_CODE = ``;
 
@@ -18,7 +18,10 @@ export default class MyDocument extends Document {
             }}
           />
           {/* PWA primary color */}
-          <meta name="theme-color" content={theme.palette.primary.main} />
+          <meta
+            name="theme-color"
+            content={defaultTheme.palette.primary.main}
+          />
           <link
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
             rel="stylesheet"

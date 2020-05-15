@@ -12,7 +12,8 @@
     "build": "next build",
     "start": "cross-env NODE_ENV=production API_ENDPOINT=https://us-central1-smiling-mark-270607.cloudfunctions.net/movieRating node server/server.js",
     "test": "jest --watch",
-    "test:ci": "jest --ci"
+    "test:ci": "jest --ci",
+    "gc": "node ./scripts/generate-component"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.10",
