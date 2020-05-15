@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import Fade from '@material-ui/core/Fade';
 import BackgroundImage from '~/atoms/BackgroundImage';
 import CenteringContainer from '~/atoms/containers/CenteringContainer';
+import InnerContainer from '~/atoms/containers/InnerContainer';
 import VerticalContainer from '~/atoms/containers/VerticalContainer';
 import Logo from '~/atoms/Logo';
 import Typography from '~/atoms/Typography';
+import VerticalLine from '~/atoms/VerticalLine';
 import LoginForm from '~/molecules/LoginForm';
 import useLoginStyles from './styles';
 
@@ -41,7 +43,13 @@ const Login = ({ style }) => {
             </VerticalContainer>
           </div>
         </Fade>
-        <LoginForm title={'Welcome Back!'} />
+        <InnerContainer
+          height={50}
+          className={classes.innerContainer}
+          leftChild={<LoginForm title={'Newcomer?'} />}
+          middleChild={<VerticalLine />}
+          rightChild={<LoginForm title={'Welcome Back!'} />}
+        />
       </CenteringContainer>
     </div>
   );
