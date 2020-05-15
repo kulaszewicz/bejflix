@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Fade from '@material-ui/core/Fade';
-import { GitHub } from '@material-ui/icons';
 import BackgroundImage from '~/atoms/BackgroundImage';
-import Button from '~/atoms/Button';
 import CenteringContainer from '~/atoms/containers/CenteringContainer';
 import VerticalContainer from '~/atoms/containers/VerticalContainer';
 import Logo from '~/atoms/Logo';
 import Typography from '~/atoms/Typography';
-import InputWithLabel from '~/molecules/InputWithLabel';
+import LoginForm from '~/molecules/LoginForm';
 import useLoginStyles from './styles';
 
 const propTypes = {
@@ -43,9 +41,7 @@ const Login = ({ style }) => {
             </VerticalContainer>
           </div>
         </Fade>
-        <InputWithLabel label={'email'} type="email" name={'email'} />
-        <InputWithLabel label={'password'} type="password" name={'password'} />
-        <Button startIcon={<GitHub />}>{'Sign in'}</Button>
+        <LoginForm title={'Welcome Back!'} />
       </CenteringContainer>
     </div>
   );
