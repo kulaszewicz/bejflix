@@ -1,10 +1,10 @@
 import { createStyles, makeStyles } from '@material-ui/core';
 
-const useInputWithLabelStyles = makeStyles(({ palette }) =>
+const useInputWithLabelStyles = makeStyles(() =>
   createStyles({
     root: {},
     label: {
-      color: palette.bej.bejGrey,
+      color: '#B8B4B4',
       textTransform: 'capitalize',
       padding: '0.7rem 0',
     },

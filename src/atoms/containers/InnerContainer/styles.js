@@ -19,6 +19,7 @@ const useInnerContainerStyles = makeStyles(({ spacing }) =>
       justifyContent: 'center',
     },
     rightChild: {
+      height: '100%',
       display: 'flex',
       justifyContent: 'flex-end',
     },

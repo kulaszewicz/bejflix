@@ -9,6 +9,7 @@ import Logo from '~/atoms/Logo';
 import Typography from '~/atoms/Typography';
 import VerticalLine from '~/atoms/VerticalLine';
 import LoginForm from '~/molecules/LoginForm';
+import RegisterForm from '~/molecules/RegisterForm';
 import useLoginStyles from './styles';
 
 const propTypes = {
@@ -46,7 +47,7 @@ const Login = ({ style }) => {
         <InnerContainer
           height={50}
           className={classes.innerContainer}
-          leftChild={<LoginForm title={'Newcomer?'} />}
+          leftChild={<RegisterForm title={'Newcomer?'} />}
           middleChild={<VerticalLine />}
           rightChild={<LoginForm title={'Welcome Back!'} />}
         />
