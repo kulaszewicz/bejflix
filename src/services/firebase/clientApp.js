@@ -20,3 +20,8 @@ if (typeof window !== 'undefined' && !firebase.apps.length) {
 }
 
 export default firebase;
+
+export const reduxFirebaseConfig = {
+  useFirestoreForProfile: false,
+  enableLogging: true,
+};
