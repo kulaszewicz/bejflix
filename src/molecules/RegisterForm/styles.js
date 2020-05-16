@@ -1,11 +1,11 @@
 import { createStyles, makeStyles } from '@material-ui/core';
 
-const useLoginFormStyles = makeStyles(({ palette }) =>
+const useRegisterFormStyles = makeStyles(({ palette }) =>
   createStyles({
     root: {
       width: '450px',
       padding: '0 68px',
-      margin: '0 auto',
+      margin: 'auto',
     },
     title: {
       color: palette.common.white,
@@ -13,15 +13,13 @@ const useLoginFormStyles = makeStyles(({ palette }) =>
       textShadow: '0px 5px 6px #0000006E',
       fontWeight: 600,
       fontSize: '1.8rem',
-      marginBottom: '1.5rem',
     },
     input: {
       width: '100%',
-      margin: '0.25rem 0',
     },
     buttonContainer: {
       display: 'inline-flex',
-      marginTop: '2rem',
+      marginTop: '0.75rem',
     },
     button: {
       width: '140px',
@@ -34,4 +32,4 @@ const useLoginFormStyles = makeStyles(({ palette }) =>
   })
 );
 
-export default useLoginFormStyles;
+export default useRegisterFormStyles;
