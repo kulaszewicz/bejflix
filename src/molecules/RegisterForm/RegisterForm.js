@@ -66,7 +66,7 @@ const RegisterForm = ({
         />
         <div className={classes.buttonContainer}>
           <Button onClick={onRegister} className={classes.button}>
-            {'Sign in'}
+            {'Register'}
           </Button>
         </div>
       </VerticalContainer>

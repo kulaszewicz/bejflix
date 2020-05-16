@@ -11,6 +11,7 @@ const useInnerContainerStyles = makeStyles(({ spacing }) =>
     }),
     leftChild: {
       display: 'flex',
+      height: '100%',
       justifyContent: 'flex-start',
     },
     middleChild: {
