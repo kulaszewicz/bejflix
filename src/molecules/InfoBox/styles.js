@@ -19,6 +19,8 @@ const useInfoBoxStyles = makeStyles(({ palette }) =>
     description: {
       color: palette.bej.bejGrey,
       textAlign: 'center',
+      width: '80%',
+      margin: '0 10%',
     },
   })
 );
