@@ -8,6 +8,7 @@ import VerticalContainer from '~/atoms/containers/VerticalContainer';
 import Logo from '~/atoms/Logo';
 import Typography from '~/atoms/Typography';
 import VerticalLine from '~/atoms/VerticalLine';
+import InfoBox from '~/molecules/InfoBox';
 import LoginForm from '~/molecules/LoginForm';
 import RegisterForm from '~/molecules/RegisterForm';
 import useLoginStyles from './styles';
@@ -50,6 +51,29 @@ const Login = ({ style }) => {
           leftChild={<RegisterForm title={'Newcomer?'} />}
           middleChild={<VerticalLine />}
           rightChild={<LoginForm title={'Welcome Back!'} />}
+        />
+        <InnerContainer
+          className={classes.innerContainerInfo}
+          leftChild={
+            <InfoBox
+              imgSrc={'/responsive.svg'}
+              description={'Responsive web app avaliable on all devicies'}
+            />
+          }
+          middleChild={
+            <InfoBox
+              imgSrc={'/star.svg'}
+              description={'Movie recommendation system based on user ratings'}
+            />
+          }
+          rightChild={
+            <InfoBox
+              imgSrc={'/movie.svg'}
+              description={
+                'Over 100 titles from different categories to choose from!'
+              }
+            />
+          }
         />
       </CenteringContainer>
     </div>
