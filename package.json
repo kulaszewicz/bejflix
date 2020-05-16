@@ -1,5 +1,5 @@
 {
-  "name": "next-boilerplate",
+  "name": "bejflix",
   "version": "0.1.0",
   "main": "server/server.js",
   "private": true,
@@ -34,7 +34,11 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-multi-carousel": "^2.5.5",
+    "react-redux": "^7.2.0",
+    "react-redux-firebase": "^3.4.0",
     "react-swipeable-views": "^0.13.9",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "shortid": "^2.2.15"
   },
   "devDependencies": {
