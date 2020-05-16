@@ -21,6 +21,7 @@ const useLoginStyles = makeStyles(() =>
       marginTop: '2rem',
     },
     innerContainerInfo: {
+      marginTop: '2rem',
       gridTemplateColumns: '1fr 1fr 1fr !important',
     },
   })
