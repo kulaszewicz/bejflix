@@ -19,9 +19,18 @@ const useLoginFormStyles = makeStyles(({ palette }) =>
       width: '100%',
       margin: '0.25rem 0',
     },
+    errorHelperText: {
+      width: '100%',
+      padding: `5px 0`,
+      color: palette.bej.bejflix,
+      zIndex: 2,
+      display: 'block',
+      pointerEvents: 'none',
+      textAlign: 'left',
+      minHeight: '20px',
+    },
     buttonContainer: {
       display: 'inline-flex',
-      marginTop: '2rem',
     },
     button: {
       width: '140px',

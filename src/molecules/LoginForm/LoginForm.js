@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import { GitHub } from '@material-ui/icons';
 import Button from '~/atoms/Button';
 import VerticalContainer from '~/atoms/containers/VerticalContainer';
@@ -64,6 +65,13 @@ const LoginForm = ({
             ...validationProps.password,
           }}
         />
+        <FormHelperText
+          id="error-helper-text"
+          className={classes.errorHelperText}
+        >
+          {(validationProps.form.error && validationProps.form.helpertext) ||
+            ''}
+        </FormHelperText>
         <div className={classes.buttonContainer}>
           <Button
             startIcon={<GitHub />}
