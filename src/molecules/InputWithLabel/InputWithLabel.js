@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import Input, { propTypes as InputProptypes } from '~/atoms/Input';
 import Typography from '~/atoms/Typography';
 import useInputWithLabelStyles from './styles';
@@ -12,7 +13,11 @@ export const propTypes = {
   ...InputProptypes,
 };
 
-const defaultProps = {};
+const defaultProps = {
+  formControlProps: {
+    error: false,
+  },
+};
 
 /** Short description of InputWithLabel. */
 
@@ -24,15 +29,21 @@ const InputWithLabel = ({
   value,
   onChange,
   label,
+  formControlProps,
 }) => {
   const classes = useInputWithLabelStyles();
-
   return (
     <div className={clsx(classes.root, className)} style={style}>
       <Typography className={classes.label} variant={'body1'} component={'p'}>
         {label}
       </Typography>
       <Input type={type} name={name} value={value} onChange={onChange} />
+      <FormHelperText
+        id={formControlProps.helpertext}
+        className={classes.errorHelperText}
+      >
+        {formControlProps.error ? formControlProps.helpertext : ''}
+      </FormHelperText>
     </div>
   );
 };

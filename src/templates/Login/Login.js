@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Fade from '@material-ui/core/Fade';
 import BackgroundImage from '~/atoms/BackgroundImage';
+import CircularProgress from '~/atoms/CircularProgress';
 import CenteringContainer from '~/atoms/containers/CenteringContainer';
 import InnerContainer from '~/atoms/containers/InnerContainer';
 import VerticalContainer from '~/atoms/containers/VerticalContainer';
@@ -19,7 +20,15 @@ const propTypes = {
 
 const defaultProps = {};
 
-const Login = ({ style }) => {
+const Login = ({
+  style,
+  loginEmail,
+  loginPassword,
+  onChange,
+  onSubmit,
+  validationProps,
+  isLoading,
+}) => {
   const classes = useLoginStyles();
   const [fadeIn, setFadeIn] = useState(false);
 
@@ -45,13 +54,26 @@ const Login = ({ style }) => {
             </VerticalContainer>
           </div>
         </Fade>
-        <InnerContainer
-          height={50}
-          className={classes.innerContainer}
-          leftChild={<RegisterForm title={'Newcomer?'} />}
-          middleChild={<VerticalLine />}
-          rightChild={<LoginForm title={'Welcome Back!'} />}
-        />
+        {isLoading ? (
+          <CircularProgress />
+        ) : (
+          <InnerContainer
+            height={50}
+            className={classes.innerContainer}
+            leftChild={<RegisterForm title={'Newcomer?'} />}
+            middleChild={<VerticalLine />}
+            rightChild={
+              <LoginForm
+                passwordValue={loginPassword}
+                loginValue={loginEmail}
+                onSignInClick={onSubmit}
+                validationProps={validationProps}
+                onChange={onChange}
+                title={'Welcome Back!'}
+              />
+            }
+          />
+        )}
         <InnerContainer
           className={classes.innerContainerInfo}
           leftChild={
