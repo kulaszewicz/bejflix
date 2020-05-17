@@ -82,7 +82,7 @@ export const registerUser = (email, password) => async (
   }
 };
 
-export const loginUser = (email, password, isRememberChecked) => async (
+export const loginUser = (email, password) => async (
   dispatch,
   getState,
   { getFirebase }
@@ -90,21 +90,12 @@ export const loginUser = (email, password, isRememberChecked) => async (
   try {
     let firebaseUser = null;
     const firebase = await getFirebase();
-    await firebase
+    const { user } = await firebase
       .auth()
-      .setPersistence(
-        isRememberChecked
-          ? firebase.auth.Auth.Persistence.LOCAL
-          : firebase.auth.Auth.Persistence.SESSION
-      )
-      .then(async () => {
-        const { user } = await firebase
-          .auth()
-          .signInWithEmailAndPassword(email, password);
-        firebaseUser = { ...user };
-        dispatch(loginSuccess(firebaseUser));
-        dispatch(setAuthState(authStates.FULLY_CONFIGURED));
-      });
+      .signInWithEmailAndPassword(email, password);
+    firebaseUser = { ...user };
+    dispatch(loginSuccess(firebaseUser));
+    dispatch(setAuthState(authStates.FULLY_CONFIGURED));
   } catch (error) {
     dispatch(loginError(error));
     dispatch(setAuthState(authStates.UNKNOWN));

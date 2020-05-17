@@ -27,6 +27,7 @@ const Input = forwardRef(
         className={clsx(classes.root, className)}
         type={type}
         name={name}
+        id={name}
         value={value}
         onChange={onChange}
       />

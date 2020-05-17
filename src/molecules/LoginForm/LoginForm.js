@@ -32,6 +32,7 @@ const LoginForm = ({
   passwordValue,
   onSignInClick,
   onWithGithubClick,
+  validationProps,
 }) => {
   const classes = useLoginFormStyles();
 
@@ -48,6 +49,9 @@ const LoginForm = ({
           onChange={onChange}
           label={'email'}
           className={classes.input}
+          formControlProps={{
+            ...validationProps.email,
+          }}
         />
         <InputWithLabel
           type={'password'}
@@ -56,6 +60,9 @@ const LoginForm = ({
           onChange={onChange}
           label={'password'}
           className={classes.input}
+          formControlProps={{
+            ...validationProps.password,
+          }}
         />
         <div className={classes.buttonContainer}>
           <Button
