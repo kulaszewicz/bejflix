@@ -88,13 +88,29 @@ export const loginUser = (email, password) => async (
   { getFirebase }
 ) => {
   try {
-    let firebaseUser = null;
     const firebase = await getFirebase();
     const { user } = await firebase
       .auth()
       .signInWithEmailAndPassword(email, password);
-    firebaseUser = { ...user };
-    dispatch(loginSuccess(firebaseUser));
+    dispatch(loginSuccess(user));
+    dispatch(setAuthState(authStates.FULLY_CONFIGURED));
+  } catch (error) {
+    dispatch(loginError(error));
+    dispatch(setAuthState(authStates.UNKNOWN));
+  }
+};
+
+export const loginWithGithub = () => async (
+  dispatch,
+  getState,
+  { getFirebase }
+) => {
+  try {
+    const firebase = await getFirebase();
+    const provider = new firebase.auth.GithubAuthProvider();
+
+    const { user } = await firebase.auth().signInWithPopup(provider);
+    dispatch(loginSuccess(user));
     dispatch(setAuthState(authStates.FULLY_CONFIGURED));
   } catch (error) {
     dispatch(loginError(error));

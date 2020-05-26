@@ -16,6 +16,13 @@ import useLoginStyles from './styles';
 
 const propTypes = {
   style: PropTypes.object,
+  validationProps: PropTypes.object,
+  loginEmail: PropTypes.string,
+  loginPassword: PropTypes.string,
+  onChange: PropTypes.func,
+  onSubmit: PropTypes.func,
+  onWithGithubClick: PropTypes.func,
+  isLoading: PropTypes.bool,
 };
 
 const defaultProps = {};
@@ -28,6 +35,7 @@ const Login = ({
   onSubmit,
   validationProps,
   isLoading,
+  onWithGithubClick,
 }) => {
   const classes = useLoginStyles();
   const [fadeIn, setFadeIn] = useState(false);
@@ -69,6 +77,7 @@ const Login = ({
                 onSignInClick={onSubmit}
                 validationProps={validationProps}
                 onChange={onChange}
+                onWithGithubClick={onWithGithubClick}
                 title={'Welcome Back!'}
               />
             }
