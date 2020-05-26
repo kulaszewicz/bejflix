@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import withAuthentication from '~/services/auth/session/withAuthentication';
-import { loginUser } from '~/services/redux/actions';
+import { loginUser, loginWithGithub } from '~/services/redux/actions';
 import withRedux from '~/services/redux/withRedux';
 import BaseValidator from '~/services/validation/base.validation';
 import { isEmail, isEmpty } from '~/services/validation/validators';
@@ -78,6 +78,10 @@ const LoginPage = withRedux(
       }
     };
 
+    const onWithGithubClick = () => {
+      dispatch(loginWithGithub());
+    };
+
     useEffect(() => {
       const {
         NOT_CONFIGURED,
@@ -124,6 +128,7 @@ const LoginPage = withRedux(
           form: formValidation,
         }}
         isLoading={isLoading}
+        onWithGithubClick={onWithGithubClick}
       />
     );
   })
