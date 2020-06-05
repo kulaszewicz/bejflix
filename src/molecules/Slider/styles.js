@@ -5,6 +5,9 @@ const useSliderStyles = makeStyles(
     container: {
       '& .carousel-item-bejflix': {
         width: '100%',
+        '& img': {
+          objectFit: 'cover',
+        },
       },
     },
   })
