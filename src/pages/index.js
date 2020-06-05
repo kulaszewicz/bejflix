@@ -1,7 +1,7 @@
-import withAuthorization from '~/services/auth/session/withAuthorization';
-import withRedux from '~/services/redux/withRedux';
 import React, { useEffect, useState } from 'react';
+import withAuthorization from '~/services/auth/session/withAuthorization';
 import { getBejflixSdk } from '~/services/bejflix/bejflix.sdk';
+import withRedux from '~/services/redux/withRedux';
 import Landing from '~/templates/Landing';
 import { useLocalStorage } from '~/utils/useLocalStorage';
 import mockMovies from '../../__mocks__/data/movies';
@@ -17,7 +17,9 @@ const Home = withRedux(
     useEffect(() => {
       Api.movie
         .getByGenre('drama')
-        .then((dramaMovies) => setMovies({ ...movies, drama: dramaMovies }))
+        .then((dramaMovies) =>
+          setMovies((prevMovies) => ({ ...prevMovies, drama: dramaMovies }))
+        )
         .catch((err) => err);
       if (!user.id) {
         setUser({
