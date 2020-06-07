@@ -44,15 +44,15 @@ const Slider = ({
         deviceType={'desktop'}
         itemClass="carousel-item-bejflix"
       >
-        {movies.map(({ poster, Title, description, id }, index) => {
+        {movies.map(({ poster, title, description, imdbId }, index) => {
           return (
             <Tile
               key={index}
               variant={variant}
-              id={id}
+              id={imdbId}
               image={poster}
-              rating={storedRatings.filter((rate) => rate.id === id)}
-              title={Title}
+              rating={storedRatings.filter((rate) => rate.id === imdbId)}
+              title={title}
               description={description}
               setStoredRatings={setStoredRatings}
               storedRatings={storedRatings}
