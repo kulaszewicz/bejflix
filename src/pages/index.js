@@ -12,21 +12,36 @@ const Home = withRedux(
     const [user, setUser] = useLocalStorage('user', {});
     const [movies, setMovies] = useState({
       drama: [],
+      adventure: [],
+      action: [],
+      comedy: [],
+      horror: [],
+      western: [],
     });
     const Api = getBejflixSdk();
     useEffect(() => {
-      Api.movie
-        .getByGenre('drama')
-        .then((dramaMovies) =>
-          setMovies((prevMovies) => ({ ...prevMovies, drama: dramaMovies }))
-        )
-        .catch((err) => err);
+      const genres = [
+        'drama',
+        'adventure',
+        'action',
+        'comedy',
+        'horror',
+        'western',
+      ];
+      genres.forEach((genre) => {
+        Api.movie
+          .getByGenre(genre)
+          .then((dramaMovies) =>
+            setMovies((prevMovies) => ({ ...prevMovies, [genre]: dramaMovies }))
+          )
+          .catch((err) => err);
+      });
       if (!user.id) {
         setUser({
           id: Math.floor(Math.random() * 1000000),
         });
       }
-    }, [setUser, user.id, Api]);
+    }, []);
     const tempSections = [
       {
         sectionTitle: 'Recommended for you',
@@ -48,6 +63,41 @@ const Home = withRedux(
         setStoredRatings,
         variant: 'sm',
         movies: movies.drama,
+      },
+      {
+        sectionTitle: 'Adventure',
+        storedRatings,
+        setStoredRatings,
+        variant: 'sm',
+        movies: movies.adventure,
+      },
+      {
+        sectionTitle: 'Action',
+        storedRatings,
+        setStoredRatings,
+        variant: 'sm',
+        movies: movies.action,
+      },
+      {
+        sectionTitle: 'Comedy',
+        storedRatings,
+        setStoredRatings,
+        variant: 'sm',
+        movies: movies.comedy,
+      },
+      {
+        sectionTitle: 'Horror',
+        storedRatings,
+        setStoredRatings,
+        variant: 'sm',
+        movies: movies.horror,
+      },
+      {
+        sectionTitle: 'Western',
+        storedRatings,
+        setStoredRatings,
+        variant: 'sm',
+        movies: movies.western,
       },
     ];
     return (
