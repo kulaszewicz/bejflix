@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 class BaseSdk {
-  constructor(apiEndpoint) {
-    this.apiEndpoint = apiEndpoint;
+  constructor() {
+    this.apiEndpoint = 'https://us-central1-bejflix.cloudfunctions.net/api';
   }
 
   getRequestConfig() {
