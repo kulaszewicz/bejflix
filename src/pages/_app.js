@@ -9,13 +9,6 @@ import { MuiThemeProvider } from '@material-ui/core/styles';
 import defaultTheme from '../utils/theme';
 import { Fonts } from '../utils/theme/fonts';
 
-if (typeof window !== undefined && process.env.NODE_ENV === 'development') {
-  const whyDidYouRender = require('@welldone-software/why-did-you-render');
-  whyDidYouRender(React, {
-    trackAllPureComponents: true,
-  });
-}
-
 function MyApp({ Component, pageProps }) {
   useEffect(() => {
     // Remove the server-side injected CSS.

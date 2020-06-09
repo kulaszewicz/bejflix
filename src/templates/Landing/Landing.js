@@ -3,13 +3,23 @@ import Header from '~/organisms/Header';
 import Section from '~/organisms/Section';
 import useLandingStyles from './styles';
 
-const Landing = ({ sections, userId }) => {
+const Landing = ({
+  sections,
+  userId,
+  searchValue,
+  setSearchValue,
+  handleSearchValueChange,
+}) => {
   const classes = useLandingStyles();
 
   return (
     <div className={classes.container}>
-      <Header />
-      <>
+      <Header
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        handleSearchValueChange={handleSearchValueChange}
+      />
+      <div className={classes.sections}>
         {sections.map(
           (
             { sectionTitle, storedRatings, setStoredRatings, variant, movies },
@@ -26,7 +36,7 @@ const Landing = ({ sections, userId }) => {
             />
           )
         )}
-      </>
+      </div>
     </div>
   );
 };
