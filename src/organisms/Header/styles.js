@@ -1,20 +1,22 @@
 import { makeStyles } from '@material-ui/styles';
 
-const useHeaderStyles = makeStyles(() => ({
+const useHeaderStyles = makeStyles(({ palette }) => ({
   container: {
     display: 'flex',
     width: '100%',
     paddingRight: '52px',
     alignItems: 'center',
     justifyItems: 'center',
-    height: '120px',
-    paddingBottom: '30px',
+    height: '100px',
   },
   search: {
     paddingLeft: '55px',
   },
   logout: {
     marginLeft: 'auto',
+  },
+  appBar: {
+    backgroundColor: palette.secondary.contrastText,
   },
 }));
 export default useHeaderStyles;

@@ -10,6 +10,11 @@ const Home = withRedux(
   withAuthorization(() => {
     const [storedRatings, setStoredRatings] = useLocalStorage('ratings', []);
     const [user, setUser] = useLocalStorage('user', {});
+    const [searchValue, setSearchValue] = useState('');
+
+    const handleSearchValueChange = ({ target }) =>
+      setSearchValue(target.value);
+
     const [movies, setMovies] = useState({
       drama: [],
       adventure: [],
@@ -102,7 +107,13 @@ const Home = withRedux(
     ];
     return (
       <div>
-        <Landing userId={user.id} sections={tempSections} />
+        <Landing
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          handleSearchValueChange={handleSearchValueChange}
+          userId={user.id}
+          sections={tempSections}
+        />
       </div>
     );
   })
