@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import clsx from 'clsx';
 import useTileStyles from './styles';
 import TileCover from './TileHover';
 
@@ -13,6 +14,7 @@ const Tile = ({
   storedRatings,
   setStoredRatings,
   userId,
+  className,
 }) => {
   const [isTileHoverVisible, setIsTileHoverVisible] = useState(false);
 
@@ -22,7 +24,7 @@ const Tile = ({
     <div
       onMouseEnter={() => setIsTileHoverVisible(true)}
       onMouseLeave={() => setIsTileHoverVisible(false)}
-      className={classes.container}
+      className={clsx(classes.container, className)}
     >
       <img className={classes.img} src={image} alt={alt} />
       {isTileHoverVisible && (

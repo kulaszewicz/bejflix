@@ -50,6 +50,12 @@ const useTileStyles = makeStyles((theme) =>
       left: '26px',
       height: '10%',
       fontSize: variant === 'sm' ? '0.75rem' : '0.875rem',
+      '& p': {
+        display: '-webkit-box',
+        '-webkit-line-clamp': 3,
+        '-webkit-box-orient': 'vertical',
+        overflow: 'hidden',
+      },
     }),
     hoverEmptyIcon: {
       color: theme.palette.grey['400'],
