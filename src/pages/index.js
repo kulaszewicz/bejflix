@@ -11,6 +11,7 @@ const Home = withRedux(
     const [storedRatings, setStoredRatings] = useLocalStorage('ratings', []);
     const [user, setUser] = useLocalStorage('user', {});
     const [searchValue, setSearchValue] = useState('');
+    const [tempMovies, setTempMovies] = useState([]);
 
     const handleSearchValueChange = ({ target }) =>
       setSearchValue(target.value);
@@ -33,6 +34,7 @@ const Home = withRedux(
         'horror',
         'western',
       ];
+      Api.movie.getAll().then(movies => setTempMovies(movies)).catch((err) => err);
       genres.forEach((genre) => {
         Api.movie
           .getByGenre(genre)
@@ -113,6 +115,7 @@ const Home = withRedux(
           handleSearchValueChange={handleSearchValueChange}
           userId={user.id}
           sections={tempSections}
+          tempMovies={tempMovies}
         />
       </div>
     );

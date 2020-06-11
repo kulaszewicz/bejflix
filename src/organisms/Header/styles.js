@@ -4,7 +4,6 @@ const useHeaderStyles = makeStyles(({ palette }) => ({
   container: {
     display: 'flex',
     width: '100%',
-    paddingRight: '52px',
     alignItems: 'center',
     justifyItems: 'center',
     height: '100px',
