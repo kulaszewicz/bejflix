@@ -8,10 +8,11 @@ export default {
   secondary: {
     main: '#E5E5E5',
     contrastText: '#000000',
+    grey: '#2b2b2b',
   },
   bej: {
-    bejLight: '#E3E0E0',
-    bejGrey: '#E5E5E5',
+    bejLight: '#e3e0e0',
+    bejGrey: '#e5e5e5',
     bejflix: '#E50914',
   },
 };

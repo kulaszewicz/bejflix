@@ -11,11 +11,8 @@ const Home = withRedux(
     const [storedRatings, setStoredRatings] = useLocalStorage('ratings', []);
     const [user, setUser] = useLocalStorage('user', {});
     const [searchValue, setSearchValue] = useState('');
-    const [tempMovies, setTempMovies] = useState([]);
-
-    const handleSearchValueChange = ({ target }) =>
-      setSearchValue(target.value);
-
+    const [isSearchFetching, setIsSearchFetching] = useState(false);
+    const [searchResults, setSearchResults] = useState([]);
     const [movies, setMovies] = useState({
       drama: [],
       adventure: [],
@@ -25,6 +22,22 @@ const Home = withRedux(
       western: [],
     });
     const Api = getBejflixSdk();
+
+    const handleSearch = ({ target }) => {
+      setSearchValue(target.value);
+      if (target.value.length > 2) {
+        setIsSearchFetching(true);
+        Api.movie
+          .search(target.value)
+          .then((results) => {
+            setSearchResults(results);
+            setIsSearchFetching(false);
+          })
+          .catch((err) => err);
+      } else {
+        setSearchResults([]);
+      }
+    };
     useEffect(() => {
       const genres = [
         'drama',
@@ -34,7 +47,6 @@ const Home = withRedux(
         'horror',
         'western',
       ];
-      Api.movie.getAll().then(movies => setTempMovies(movies)).catch((err) => err);
       genres.forEach((genre) => {
         Api.movie
           .getByGenre(genre)
@@ -112,10 +124,11 @@ const Home = withRedux(
         <Landing
           searchValue={searchValue}
           setSearchValue={setSearchValue}
-          handleSearchValueChange={handleSearchValueChange}
           userId={user.id}
           sections={tempSections}
-          tempMovies={tempMovies}
+          searchResults={searchResults}
+          handleSearch={handleSearch}
+          isSearchFetching={isSearchFetching}
         />
       </div>
     );
