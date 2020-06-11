@@ -9,8 +9,9 @@ const Landing = ({
   userId,
   searchValue,
   setSearchValue,
-  handleSearchValueChange,
-  tempMovies,
+  searchResults,
+  handleSearch,
+  isSearchFetching,
 }) => {
   const classes = useLandingStyles();
 
@@ -19,16 +20,18 @@ const Landing = ({
       <Header
         searchValue={searchValue}
         setSearchValue={setSearchValue}
-        handleSearchValueChange={handleSearchValueChange}
+        handleSearchValueChange={handleSearch}
       />
 
       <div className={classes.sections}>
-        {searchValue && searchValue.length ? (
+        {searchValue && searchValue.length > 2 ? (
           <SearchResults
             storedRatings={sections[0].storedRatings}
             setStoredRatings={sections[0].setStoredRatings}
-            results={[]}
+            results={searchResults}
             userId={userId}
+            searchValue={searchValue}
+            isSearchFetching={isSearchFetching}
           />
         ) : (
           <>

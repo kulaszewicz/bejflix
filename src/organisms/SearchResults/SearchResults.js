@@ -1,27 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Skeleton from '@material-ui/lab/Skeleton';
 import Tile from '~/atoms/Tile/Tile';
 import NoResults from '~/molecules/NoResults';
 import useSearchResultsStyles from './styles';
 
 const propTypes = {
   style: PropTypes.object,
+  results: PropTypes.array,
+  storedRatings: PropTypes.array,
+  setStoredRatings: PropTypes.func,
+  userId: PropTypes.string,
+  isSearchFetching: PropTypes.bool,
 };
 
 const defaultProps = {};
 
-// @ts-ignore
 const SearchResults = ({
   style,
   results,
   storedRatings,
   setStoredRatings,
-  sectionTitle,
   userId,
+  isSearchFetching,
 }) => {
   const classes = useSearchResultsStyles();
 
-  return results && results.length ? (
+  return isSearchFetching ? (
+    <div className={classes.root} style={style}>
+      {[...Array(20).keys()].map(() => (
+        <Skeleton classes={{ root: classes.skeleton }} />
+      ))}
+    </div>
+  ) : results && results.length ? (
     <div className={classes.root} style={style}>
       {results.map(({ poster, title, description, imdbId }, index) => (
         <Tile

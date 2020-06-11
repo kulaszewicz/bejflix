@@ -7,6 +7,9 @@ class MovieSdk extends BaseSdk {
   async getByGenre(genre) {
     return this.get(`movies/${genre}`);
   }
+  async search(keyword) {
+    return this.get(`movies/search/${keyword}`);
+  }
 }
 
 export default MovieSdk;
