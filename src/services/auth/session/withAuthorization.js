@@ -8,6 +8,7 @@ import authStates from '~/services/redux/authStates';
 // HOC for pages which you can't access while you're not logged in
 const withAuthorization = (Component) => (props) => {
   const [canAccess, setCanAccess] = useState(false);
+  const [user, setUser] = useState({});
   const dispatch = useDispatch();
   const Router = useRouter();
   useEffect(() => {
@@ -16,13 +17,14 @@ const withAuthorization = (Component) => (props) => {
         Router.push('/login');
         dispatch(setAuthState(authStates.UNKNOWN));
       } else {
+        setUser({ ...authUser });
         dispatch(setAuthState(authStates.FULLY_CONFIGURED));
         setCanAccess(true);
       }
     });
   }, [Router, dispatch]);
 
-  return <>{canAccess && <Component {...props} />}</>;
+  return <>{canAccess && <Component {...props} authUser={user} />}</>;
 };
 
 export default withAuthorization;

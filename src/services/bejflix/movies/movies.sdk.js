@@ -10,6 +10,9 @@ class MovieSdk extends BaseSdk {
   async search(keyword) {
     return this.get(`movies/search/${keyword}`);
   }
+  async getTop10() {
+    return this.get(`movies/top10`);
+  }
 }
 
 export default MovieSdk;
