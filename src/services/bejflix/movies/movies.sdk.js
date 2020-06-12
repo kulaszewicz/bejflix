@@ -13,6 +13,9 @@ class MovieSdk extends BaseSdk {
   async getTop10() {
     return this.get(`movies/top10`);
   }
+  async getRecommended(movieRatings) {
+    return this.post(`movies/recommended`, movieRatings, true);
+  }
 }
 
 export default MovieSdk;

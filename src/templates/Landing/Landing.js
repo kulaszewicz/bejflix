@@ -43,6 +43,7 @@ const Landing = ({
                   setStoredRatings,
                   variant,
                   movies,
+                  isSectionFetching,
                 },
                 index
               ) => (
@@ -54,6 +55,7 @@ const Landing = ({
                   variant={variant}
                   movies={movies}
                   userId={userId}
+                  isSectionFetching={isSectionFetching}
                 />
               )
             )}

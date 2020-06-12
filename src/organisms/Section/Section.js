@@ -10,10 +10,11 @@ const Section = ({
   setStoredRatings,
   sectionTitle,
   userId,
+  isSectionFetching,
 }) => {
   const classes = useSectionStyles({ variant });
 
-  return (
+  return (movies && movies.length) || isSectionFetching ? (
     <div className={classes.container}>
       <Typography
         className={classes.sectionTitle}
@@ -28,9 +29,10 @@ const Section = ({
         movies={movies}
         storedRatings={storedRatings}
         setStoredRatings={setStoredRatings}
+        isSectionFetching={isSectionFetching}
       />
     </div>
-  );
+  ) : null;
 };
 
 Section.displayName = 'Section';
