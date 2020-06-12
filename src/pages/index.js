@@ -104,10 +104,16 @@ const Home = withRedux(
       );
       if (mappedRatings && mappedRatings.length) {
         setAreRecommendationsFetching(true);
-        Api.movie.getRecommended(mappedRatings).then((results) => {
-          setAreRecommendationsFetching(false);
-          setMovies({ ...movies, recommended: results });
-        });
+        Api.movie
+          .getRecommended(mappedRatings)
+          .then((results) => {
+            setAreRecommendationsFetching(false);
+            setMovies({ ...movies, recommended: results });
+          })
+          .catch(() => {
+            setMovies({ ...movies, recommended: [] });
+            setAreRecommendationsFetching(false);
+          });
       }
     }, []);
 
