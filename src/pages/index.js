@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import withAuthorization from '~/services/auth/session/withAuthorization';
 import { getBejflixSdk } from '~/services/bejflix/bejflix.sdk';
 import withRedux from '~/services/redux/withRedux';
@@ -7,19 +7,14 @@ import { useLocalStorage } from '~/utils/useLocalStorage';
 import mockMovies from '../../__mocks__/data/movies';
 
 const Home = withRedux(
-  withAuthorization(() => {
+  withAuthorization(({ sections, authUser }) => {
     const [storedRatings, setStoredRatings] = useLocalStorage('ratings', []);
-    const [user, setUser] = useLocalStorage('user', {});
+    const [user] = useState(authUser);
     const [searchValue, setSearchValue] = useState('');
     const [isSearchFetching, setIsSearchFetching] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
-    const [movies, setMovies] = useState({
-      drama: [],
-      adventure: [],
-      action: [],
-      comedy: [],
-      horror: [],
-      western: [],
+    const [movies] = useState({
+      ...sections,
     });
     const Api = getBejflixSdk();
 
@@ -38,29 +33,6 @@ const Home = withRedux(
         setSearchResults([]);
       }
     };
-    useEffect(() => {
-      const genres = [
-        'drama',
-        'adventure',
-        'action',
-        'comedy',
-        'horror',
-        'western',
-      ];
-      genres.forEach((genre) => {
-        Api.movie
-          .getByGenre(genre)
-          .then((dramaMovies) =>
-            setMovies((prevMovies) => ({ ...prevMovies, [genre]: dramaMovies }))
-          )
-          .catch((err) => err);
-      });
-      if (!user.id) {
-        setUser({
-          id: Math.floor(Math.random() * 1000000),
-        });
-      }
-    }, []);
     const tempSections = [
       {
         sectionTitle: 'Recommended for you',
@@ -70,11 +42,11 @@ const Home = withRedux(
         movies: mockMovies.slice(0, 6),
       },
       {
-        sectionTitle: 'Top 10 this week',
+        sectionTitle: 'Top 10 this month',
         storedRatings,
         setStoredRatings,
         variant: 'sm',
-        movies: mockMovies.slice(6, 15),
+        movies: movies.top10,
       },
       {
         sectionTitle: 'Drama',
@@ -124,7 +96,7 @@ const Home = withRedux(
         <Landing
           searchValue={searchValue}
           setSearchValue={setSearchValue}
-          userId={user.id}
+          userId={user.uid}
           sections={tempSections}
           searchResults={searchResults}
           handleSearch={handleSearch}
@@ -134,5 +106,28 @@ const Home = withRedux(
     );
   })
 );
+
+Home.getInitialProps = async () => {
+  const Api = getBejflixSdk();
+  const sections = {};
+  const genres = [
+    'drama',
+    'adventure',
+    'action',
+    'comedy',
+    'horror',
+    'western',
+  ];
+  await Api.movie.getTop10().then((movies) => (sections.top10 = movies));
+  for (const genre of genres) {
+    await Api.movie
+      .getByGenre(genre)
+      .then((dramaMovies) => (sections[genre] = dramaMovies))
+      .catch((err) => err);
+  }
+  return {
+    sections,
+  };
+};
 
 export default Home;
