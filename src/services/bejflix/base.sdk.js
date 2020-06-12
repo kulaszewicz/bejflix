@@ -13,11 +13,11 @@ class BaseSdk {
     };
   }
 
-  async post(path, payload) {
+  async post(path, payload, isArray) {
     try {
       const response = await axios.post(
         `${this.apiEndpoint}/${path}`,
-        { ...payload },
+        isArray ? [...payload] : { ...payload },
         {
           ...this.getRequestConfig(),
         }

@@ -1,5 +1,6 @@
 import React from 'react';
 import Carousel from 'react-multi-carousel';
+import Skeleton from '@material-ui/lab/Skeleton';
 import Tile from '../../atoms/Tile/Tile';
 import useSliderStyles from './styles';
 
@@ -9,8 +10,9 @@ const Slider = ({
   storedRatings,
   setStoredRatings,
   userId,
+  isSectionFetching,
 }) => {
-  const classes = useSliderStyles();
+  const classes = useSliderStyles({ variant });
 
   const responsive = {
     desktop: {
@@ -44,22 +46,26 @@ const Slider = ({
         deviceType={'desktop'}
         itemClass="carousel-item-bejflix"
       >
-        {movies.map(({ poster, title, description, imdbId }, index) => {
-          return (
-            <Tile
-              key={index}
-              variant={variant}
-              id={imdbId}
-              image={poster}
-              rating={storedRatings.filter((rate) => rate.id === imdbId)}
-              title={title}
-              description={description}
-              setStoredRatings={setStoredRatings}
-              storedRatings={storedRatings}
-              userId={userId}
-            />
-          );
-        })}
+        {isSectionFetching
+          ? [...Array(20).keys()].map(() => (
+              <Skeleton classes={{ root: classes.skeleton }} />
+            ))
+          : movies.map(({ poster, title, description, imdbId }, index) => {
+              return (
+                <Tile
+                  key={index}
+                  variant={variant}
+                  id={imdbId}
+                  image={poster}
+                  rating={storedRatings.filter((rate) => rate.id === imdbId)}
+                  title={title}
+                  description={description}
+                  setStoredRatings={setStoredRatings}
+                  storedRatings={storedRatings}
+                  userId={userId}
+                />
+              );
+            })}
       </Carousel>
     </div>
   );

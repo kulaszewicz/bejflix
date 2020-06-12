@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import withAuthorization from '~/services/auth/session/withAuthorization';
 import { getBejflixSdk } from '~/services/bejflix/bejflix.sdk';
 import withRedux from '~/services/redux/withRedux';
 import Landing from '~/templates/Landing';
 import { useLocalStorage } from '~/utils/useLocalStorage';
-import mockMovies from '../../__mocks__/data/movies';
 
 const Home = withRedux(
   withAuthorization(({ sections, authUser }) => {
@@ -12,10 +11,16 @@ const Home = withRedux(
     const [user] = useState(authUser);
     const [searchValue, setSearchValue] = useState('');
     const [isSearchFetching, setIsSearchFetching] = useState(false);
+    const [
+      areRecommendationsFetching,
+      setAreRecommendationsFetching,
+    ] = useState(false);
     const [searchResults, setSearchResults] = useState([]);
-    const [movies] = useState({
+    const [movies, setMovies] = useState({
+      recommended: [],
       ...sections,
     });
+
     const Api = getBejflixSdk();
 
     const handleSearch = ({ target }) => {
@@ -39,13 +44,14 @@ const Home = withRedux(
         storedRatings,
         setStoredRatings,
         variant: 'lg',
-        movies: mockMovies.slice(0, 6),
+        movies: movies.recommended,
+        isSectionFetching: areRecommendationsFetching,
       },
       {
         sectionTitle: 'Top 10 this month',
         storedRatings,
         setStoredRatings,
-        variant: 'sm',
+        variant: movies.recommended.length ? 'sm' : 'lg',
         movies: movies.top10,
       },
       {
@@ -91,6 +97,20 @@ const Home = withRedux(
         movies: movies.western,
       },
     ];
+
+    useEffect(() => {
+      const mappedRatings = storedRatings.map((ratingEntry) =>
+        Object.values(ratingEntry)
+      );
+      if (mappedRatings && mappedRatings.length) {
+        setAreRecommendationsFetching(true);
+        Api.movie.getRecommended(mappedRatings).then((results) => {
+          setAreRecommendationsFetching(false);
+          setMovies({ ...movies, recommended: results });
+        });
+      }
+    }, []);
+
     return (
       <div>
         <Landing
