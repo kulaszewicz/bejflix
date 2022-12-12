@@ -22,7 +22,7 @@
     "axios": "^0.19.2",
     "clsx": "^1.1.0",
     "cross-env": "^7.0.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "firebase": "^7.14.0",
     "imagemin-mozjpeg": "^8.0.0",
     "immer": "^6.0.3",
